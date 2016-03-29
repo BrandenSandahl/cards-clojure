@@ -75,10 +75,17 @@
 (defn -main []
   (let [deck (create-deck)
         hands (create-hands deck)
-        flush-hands (count (filter flush? hands))
-        strait-hands (count (filter strait? hands))
-        strait-flush-hands (count (filter strait? flush-hands))
-        four-of-a-kind-hands (count (filter four-of-a-kind? hands))
-        three-of-a-kind-hands (count (filter three-of-a-kind? hands))
-        two-pair-hands (count (filter two-pair? hands))]
-    (count two-pair-hands)))
+        flush-hands (filter flush? hands)
+        strait-hands (filter strait? hands)
+        strait-flush-hands (filter strait? flush-hands)
+        four-of-a-kind-hands (filter four-of-a-kind? hands)
+        three-of-a-kind-hands (filter three-of-a-kind? hands)
+        two-pair-hands (filter two-pair? hands)]
+    (printf "Total hands: %d
+            Total Flushes %d
+            Total Straits %d
+            Total Strait Flushes %d
+            Total Four of a Kinds %d
+            Total Three of a Kinds %d
+            Total Two Pairs %d" 
+      (count hands) (count flush-hands) (count strait-hands) (count strait-flush-hands) (count four-of-a-kind-hands) (count three-of-a-kind-hands) (count two-pair-hands))))
